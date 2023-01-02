@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "928046563133",
+    "project_id": "instagram-clone-flutter-734e3",
+    "storage_bucket": "instagram-clone-flutter-734e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928046563133:android:cec8b47f3f02aff4ba4f54",
+        "android_client_info": {
+          "package_name": "com.learn.instagram_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928046563133-s1udbqdo0qrsc1fk2eqcss67hdcep4sc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfJCbiv42jBIRRgN2p-Dp5q7YLDz99cIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928046563133-s1udbqdo0qrsc1fk2eqcss67hdcep4sc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
