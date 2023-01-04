@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
+import 'package:instagram_clone/resources/auth_methods.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -91,20 +92,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 //button login
                 InkWell(
-                  child:Container(
-                    child: Text("Log in"),
-                    width: double.infinity,
-                    alignment : Alignment.center,
-                    padding : const EdgeInsets.symmetric(vertical: 12),
-                    decoration: const ShapeDecoration(
-                        shape: RoundedRectangleBorder(
+                  onTap: () async {
+                    String res= await AuthMethods().signUpUser(
+                    email: _emailController.text,
+                    userName: _userNameController.text,
+                    password: _passwordController.text,
+                    bio: _bioController.text);
+
+                    print("res"+res);
+                  },
+                    child:Container(
+                          child: Text("Sign up"),
+                          width: double.infinity,
+                          alignment : Alignment.center,
+                          padding : const EdgeInsets.symmetric(vertical: 12),
+                          decoration: const ShapeDecoration(
+                          shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
-                              Radius.circular(4)
+                          Radius.circular(4)
                           ),
-                        ),
-                        color:blueColor
+                          ),
+                          color:blueColor
+                          ),
                     ),
-                  ),
+
                 ),
 
 
