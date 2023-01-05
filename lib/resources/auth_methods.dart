@@ -43,8 +43,15 @@ class AuthMethods {
 
         print(cred.user!.uid);
         res = "success";
-      }
-    } catch (err) {
+      }}
+    // } on FirebaseAuthException catch(err){
+    //   if(err.code=='invalid-email'){
+    //     res='The Email is invalid formatted';
+    //   }else if(err.code=='weak-password'){
+    //
+    //   }
+    // }
+    catch (err) {
       res = err.toString();
     }
     return res;
