@@ -1,3 +1,4 @@
+import 'package:instagram_clone/utils/global_variable.dart';
 import 'package:js/js.dart';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,7 +39,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   }
 
   void navigationTapped(int page){
-    print(page);
+    
       pageController.jumpToPage(page);
   }
 
@@ -60,13 +61,7 @@ void onPageChanged(int page){
     return Scaffold(
         body:PageView(
           
-          children: [
-              Text("1 ztC4QvtvOdSkk9yJKK3valKUX2, photoUrl: https://firebasestorage.googleap"),
-              Text("2"),
-              Text("3ztC4QvtvOdSkk9yJKK3valKUX2, photoUrl: https://firebasestorage.googleap"),
-              Text("4"),
-              Text("5"),
-          ],
+          children: homeScreenItems,
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
          onPageChanged: onPageChanged,
