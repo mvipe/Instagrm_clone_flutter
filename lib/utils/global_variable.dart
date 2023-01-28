@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/screens/add_post_screen.dart';
+import 'package:instagram_clone/screens/feed_screen.dart';
 
 const webScreenSize=600;
 
 //home bottom baar items
 const homeScreenItems=[
-              Text("1 ztC4QvtvOdSkk9yJKK3valKUX2, photoUrl: https://firebasestorage.googleap"),
+              FeedScreen(),
               Text("2"),
               AddPostScreen(),
               Text("4"),

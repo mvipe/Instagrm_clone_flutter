@@ -18,25 +18,43 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
   final TextEditingController _descriptionController=TextEditingController();
+  bool _isLoading=false;
 
   void postImage(
     String uid,
     String userName,
     String profImage
   ) async{
+    setState(() {
+      _isLoading=true;
+    });
     try{
 
         String res= await FirestoreMethods().uploadPost(_descriptionController.text, _file!, uid, userName, profImage);
 
         if(res=='success'){
+          
+          setState(() {
+      _isLoading=false;
+    });
           showSnackbar("Posted",context);
+          clearImage();
         }else{
+          setState(() {
+      _isLoading=false;
+    });
           showSnackbar(res, context);
         }
     }catch(e){
 showSnackbar(e.toString(), context);
     }
 
+  }
+
+  void clearImage(){
+    setState(() {
+      _file=null;
+    });
   }
 
   _selectImage(BuildContext context){
@@ -93,13 +111,14 @@ showSnackbar(e.toString(), context);
   @override
   Widget build(BuildContext context) {
     final User user=Provider.of<UserProvider>(context).getUser;
+
     
 
     return _file!=null ? Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         leading: IconButton(icon: const Icon(Icons.arrow_back)
-        ,onPressed: () {},),
+        ,onPressed: clearImage,),
         title: const Text("Post to"),
         actions: [
           TextButton(onPressed: ()=>postImage(user.uid, user.username, user.photoUrl), child: const Text('Post',style: TextStyle(
@@ -111,6 +130,8 @@ showSnackbar(e.toString(), context);
       ),
       body: Column(
         children: [
+          _isLoading?const LinearProgressIndicator():const Padding(padding: EdgeInsets.only(top: 0),),
+          const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
