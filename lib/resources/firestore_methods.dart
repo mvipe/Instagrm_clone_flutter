@@ -20,7 +20,8 @@ class FirestoreMethods{
         String photoUrl=await StorageMethods().uploadImageToFirestore('posts', file, true);
 
         String postId=Uuid().v1();
-        Post post=Post(description: description,
+        Post post=Post(
+          description: description,
          uid: uid,
           username: username,
            postId: postId,
