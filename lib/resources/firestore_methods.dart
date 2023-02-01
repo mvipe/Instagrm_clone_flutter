@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:instagram_clone/models/post.dart';
@@ -40,5 +42,23 @@ class FirestoreMethods{
     }
 
     return res;
+  }
+
+  Future<void> likePost(String postId,String uid,List likes) async{
+      try{
+        if(likes.contains(uid)){
+            //dislike the post
+           await  _firestore.collection('posts').doc(postId).update({
+              'likes':FieldValue.arrayRemove([uid])
+            });
+        }else{
+           await  _firestore.collection('posts').doc(postId).update({
+              'likes':FieldValue.arrayUnion([uid])
+            });
+        }
+
+      }catch(e){
+        print(e.toString());
+      }
   }
 }
